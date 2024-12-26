@@ -1,0 +1,46 @@
+# Java 빌드 결과물 (target/ 디렉토리에서 생성되는 파일들)
+target/
+*.jar
+*.war
+*.ear
+*.class
+*.log
+
+# Maven, Gradle 빌드 시스템 관련 파일들
+.idea/
+*.iml
+*.classpath
+*.project
+/.settings/
+build/
+out/
+
+# IntelliJ IDEA 프로젝트 파일들
+.idea/
+*.iml
+
+# Eclipse 프로젝트 파일들
+*.log
+.settings/
+bin/
+
+# MacOS 시스템 파일들
+.DS_Store
+
+# Windows 시스템 파일들
+Thumbs.db
+
+# 1.8 및 그 이상에서의 Gradle 캐시 폴더
+.gradle/
+build/
+
+# NetBeans 관련
+nbproject/
+
+# VSCode 관련
+.vscode/
+
+# 환경 설정 관련 (예: 데이터베이스, 비밀번호 등)
+*.properties
+
+/logs
