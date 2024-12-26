@@ -1,0 +1,19 @@
+services:
+  app-tz:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app-tz
+    ports:
+      - "8088:8080"
+    volumes:
+      - ./logs:/data/log
+    environment:
+      - TZ=Asia/Seoul
+      - LOG_DIR=/data/log
+    networks:
+      - loki-network
+
+networks:
+  loki-network:
+    external: true

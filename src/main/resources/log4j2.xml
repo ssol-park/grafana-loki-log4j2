@@ -1,0 +1,63 @@
+팅<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" packages="pl.tkowalcz.tjahzi.log4j2">
+    <!-- Property 설정 -->
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+        <Property name="LOG_DIR">/data/log</Property>
+        <Property name="LOG_FILE_NAME">catalina.log</Property>
+        <Property name="LOKI_URL">http://loki:3100</Property>
+        <Property name="HOSTNAME">${sys:hostname}</Property>
+    </Properties>
+
+    <!-- Appenders 정의 -->
+    <Appenders>
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+        </Console>
+
+        <!-- Rolling File Appender -->
+        <RollingFile name="RollingFile" fileName="${LOG_DIR}/${LOG_FILE_NAME}"
+                     filePattern="${LOG_DIR}/catalina-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+            <Policies>
+                <!-- 롤링 정책: 매일 새로운 팅로그 파일 생성 -->
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingFile>
+
+        <!-- Loki Appender -->
+        <Loki name="LokiAppender" bufferSizeMegabytes="64">
+            <!-- Loki Server URL -->
+            <url>${LOKI_URL}</url>
+
+            <!-- Filters and Layout -->
+            <PatternLayout>
+                <Pattern>
+                    time=%d{yyyy-MM-dd HH:mm:ss},app=loki-log4j2,host=${HOSTNAME},level=%level,logger=%logger{36},thread=%thread,message=%msg,exception=%ex{3}
+                </Pattern>
+            </PatternLayout>
+
+            <!-- Optional Headers -->
+            <Header name="X-Scope-OrgID" value="default" />
+
+            <!-- Labels -->
+            <Label name="app" value="loki-log4j2" />
+            <Label name="host" value="${HOSTNAME}" />
+            <Label name="level" value="%level" /> <!-- level 레이블 추가 -->
+
+            <!-- Log Level Mapping -->
+            <LogLevelLabel>level</LogLevelLabel>
+        </Loki>
+    </Appenders>
+
+    <!-- Loggers 정의 -->
+    <Loggers>
+        <!-- Root Logger -->
+        <Root level="info">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="RollingFile" />
+            <AppenderRef ref="LokiAppender" />
+        </Root>
+    </Loggers>
+</Configuration>
