@@ -35,7 +35,7 @@
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout>
                 <Pattern>
-                    time=%d{yyyy-MM-dd HH:mm:ss},app=log4j2-app,host=dev,level=%level,logger=%logger{36},thread=%thread,exName=%X{exName},message=%msg,exception=%ex{3}
+                    time=%d{yyyy-MM-dd HH:mm:ss},app=log4j2-app,host=dev,level=%level,logger=%logger{36},thread=%thread,exName=%X{exName:-notException},message=%msg,exception=%ex{3}
                 </Pattern>
             </PatternLayout>
 
@@ -51,7 +51,7 @@
             <Label name="app" value="log4j2-app" />
             <Label name="host" value="dev" />
             <Label name="level" value="%level" />
-            <Label name="exName" value="${ctx:exName}" />
+            <Label name="exName" value="${ctx:exName:-notException}" />
 
             <!-- Log Level Mapping -->
             <LogLevelLabel>level</LogLevelLabel>
