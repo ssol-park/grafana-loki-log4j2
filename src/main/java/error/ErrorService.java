@@ -31,6 +31,8 @@ public class ErrorService {
             case 3:
                 logger.info("idx == 3, OutOfMemoryError");
                 throw new OutOfMemoryError("Heap space exceeded");
+            case 4:
+                logger.error("idx == 4, Not Exception.");
             default:
                 logger.info("idx: {}, Not matched. Success", idx);
         }
