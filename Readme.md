@@ -1,9 +1,12 @@
-### tjahzi/log4j2-appender
-
+## Ref
+#### tjahzi/log4j2-appender
 - https://github.com/tkowalcz/tjahzi/blob/master/log4j2-appender/README.md
+#### Grafana Learn
+- https://grafana.com/docs/grafana/latest/
+#### LogQL query
+- https://grafana.com/docs/loki/latest/query/bp-query/
 
-
-
+---
 ## Log4j2의 MDC 데이터 흐름 및 동작 방식
 
 ### MDC 
@@ -36,4 +39,3 @@
 - 따라서, **이미 복사된 MDC 데이터**만 접근 가능하고, 해당 시점에 MDC를 수정할 수 없다.
 
 ---
-
