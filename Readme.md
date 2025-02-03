@@ -5,6 +5,8 @@
 - https://grafana.com/docs/grafana/latest/
 #### LogQL query
 - https://grafana.com/docs/loki/latest/query/bp-query/
+#### Prometheus
+- https://docs.micrometer.io/micrometer/reference/implementations/prometheus.html
 
 ---
 ## Log4j2의 MDC 데이터 흐름 및 동작 방식
