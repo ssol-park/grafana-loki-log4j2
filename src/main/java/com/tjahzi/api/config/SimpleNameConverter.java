@@ -1,10 +1,7 @@
-package config;
+package com.tjahzi.api.config;
 
 import org.apache.logging.log4j.core.LogEvent;
-import org.apache.logging.log4j.core.config.plugins.Plugin;
-import org.apache.logging.log4j.core.pattern.ConverterKeys;
 import org.apache.logging.log4j.core.pattern.LogEventPatternConverter;
-import org.apache.logging.log4j.core.pattern.PatternConverter;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

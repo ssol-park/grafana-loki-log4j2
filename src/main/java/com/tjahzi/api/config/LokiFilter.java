@@ -1,4 +1,4 @@
-package config;
+package com.tjahzi.api.config;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.Filter;
