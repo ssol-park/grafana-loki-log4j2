@@ -15,6 +15,7 @@ RUN mkdir -p /data/log
 
 # Set environment variables
 ENV LOG_DIR=/data/log
+ENV JAVA_OPTS="-Dspring.profiles.active=dev -Dservice.name=app-tz"
 
 # Copy WAR file to Tomcat webapps directory and rename it to ROOT.war
 COPY target/loki-log4j2.war /usr/local/tomcat/webapps/ROOT.war
