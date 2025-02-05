@@ -1,4 +1,4 @@
-package com.tjahzi.api.config;
+package com.tjahzi.api.filter;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.Filter;
@@ -9,7 +9,7 @@ import org.apache.logging.log4j.core.config.plugins.PluginFactory;
 import org.apache.logging.log4j.core.filter.AbstractFilter;
 
 
-@Plugin(name = "LokiFilter", category = "Core", elementType = Filter.ELEMENT_TYPE)
+//@Plugin(name = "LokiFilter", category = "Core", elementType = Filter.ELEMENT_TYPE)
 public class LokiFilter extends AbstractFilter {
 
     private final Level level;
