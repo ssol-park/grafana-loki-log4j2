@@ -3,10 +3,11 @@
     <!-- Property 설정 -->
     <Properties>
         <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
-        <Property name="LOG_DIR">/data/log</Property>
+        <Property name="LOG_DIR">${env:LOG_DIR}</Property>
         <Property name="LOG_FILE_NAME">catalina.log</Property>
         <Property name="LOKI_URL">http://loki:3100</Property>
-
+        <Property name="HOST">${sys:spring.profiles.active}</Property>
+        <Property name="APP">${sys:service.name}</Property>
     </Properties>
 
     <!-- Appenders 정의 -->
@@ -32,26 +33,21 @@
             <url>${LOKI_URL}</url>
 
             <!-- Filters and Layout -->
-            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+<!--            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>-->
+
             <PatternLayout>
                 <Pattern>
-                    time=%d{yyyy-MM-dd HH:mm:ss},app=log4j2-app,host=dev,level=%level,logger=%logger{36},thread=%thread,exName=%X{exName:-notException},message=%msg,exception=%ex{3}
+                    time=%d{yyyy-MM-dd HH:mm:ss}, traceId=%X{traceId}, thread=%thread, logger=%logger{36}, msg=%msg%n, exception=%ex{5}
                 </Pattern>
             </PatternLayout>
-
-            <Filters>
-                <!-- LokiFilter 추가 -->
-                <LokiFilter level="ERROR" />
-            </Filters>
 
             <!-- Optional Headers -->
 <!--            <Header name="X-Scope-OrgID" value="default" />-->
 
             <!-- Labels -->
-            <Label name="app" value="log4j2-app" />
-            <Label name="host" value="dev" />
+            <Label name="app" value="${APP}" />
+            <Label name="host" value="${HOST}" />
             <Label name="level" value="%level" />
-            <Label name="exName" value="${ctx:exName:-notException}" />
 
             <!-- Log Level Mapping -->
             <LogLevelLabel>level</LogLevelLabel>
