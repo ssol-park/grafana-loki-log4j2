@@ -1,5 +1,6 @@
 package com.tjahzi.api.error;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,8 +18,8 @@ public class ErrorController {
     }
 
     @GetMapping
-    public String getRandomError() throws TimeoutException {
+    public ResponseEntity<Void> getRandomError() {
         errorService.getRandomError();
-        return "Success!";
+        return ResponseEntity.ok().build();
     }
 }
