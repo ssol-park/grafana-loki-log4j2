@@ -26,9 +26,12 @@ public class ErrorService {
 
         CompletableFuture.runAsync(() -> {
             try {
+                Thread.sleep(5000);
                 doJob(idx);
             } catch (RuntimeException e) {
                 logger.error("{}", e.getMessage(), e);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }, executor);
     }
