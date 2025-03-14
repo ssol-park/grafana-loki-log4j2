@@ -95,6 +95,12 @@
             <version>1.14.3</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-core</artifactId>
+            <version>1.6.6</version>
+        </dependency>
+
         <!-- Micrometer Tracing -->
         <dependency>
             <groupId>io.micrometer</groupId>
