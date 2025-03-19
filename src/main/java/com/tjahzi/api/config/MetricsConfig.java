@@ -27,4 +27,12 @@ public class MetricsConfig {
 
         return registry;
     }
+
+    /*@Bean
+    public DataSource hikariDataSource(DataSource dataSource, MeterRegistry meterRegistry) {
+        if (dataSource instanceof HikariDataSource) {
+            ((HikariDataSource) dataSource).setMetricsTrackerFactory(new MicrometerMetricsTrackerFactory(meterRegistry));
+        }
+        return dataSource;
+    }*/
 }
