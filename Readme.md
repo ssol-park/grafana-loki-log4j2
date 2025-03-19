@@ -7,6 +7,8 @@
 - https://grafana.com/docs/loki/latest/query/bp-query/
 #### Prometheus
 - https://docs.micrometer.io/micrometer/reference/implementations/prometheus.html
+#### Grafana dashboard
+ - https://grafana.com/grafana/dashboards/4701-jvm-micrometer/
 
 ---
 ## Log4j2의 MDC 데이터 흐름 및 동작 방식
